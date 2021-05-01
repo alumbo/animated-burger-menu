@@ -1,0 +1,66 @@
+<button class="toggle-burger-menu" aria-expanded="false" aria-label="Menu">
+  <span>
+    <hr />
+    <hr />
+    <hr />
+  </span>
+</button>
+
+<script>
+  const toggleBurgerMenu = document.querySelector(".toggle-burger-menu");
+  toggleBurgerMenu.addEventListener("click", function () {
+    if (this.getAttribute("aria-expanded") === "false") {
+      this.setAttribute("aria-expanded", true);
+      // show the menu...
+    } else {
+      this.setAttribute("aria-expanded", false);
+      // hide the menu...
+    }
+  });
+</script>
+
+<style>
+  .toggle-burger-menu {
+    padding: 8px 5px;
+    overflow: hidden;
+    appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .toggle-burger-menu[aria-expanded="true"] span {
+    transform: translateX(9px);
+  }
+  .toggle-burger-menu[aria-expanded="true"] hr:nth-child(1) {
+    transform: rotateZ(45deg) translateY(2px);
+  }
+  .toggle-burger-menu[aria-expanded="true"] hr:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-9px);
+  }
+  .toggle-burger-menu[aria-expanded="true"] hr:nth-child(3) {
+    transform: rotateZ(-45deg) translateY(-2px);
+  }
+  .toggle-burger-menu hr:nth-child(1) {
+    transform-origin: top left;
+  }
+  .toggle-burger-menu hr:nth-child(3) {
+    transform-origin: bottom left;
+    margin-bottom: 0;
+  }
+  .toggle-burger-menu span {
+    display: block;
+  }
+  .toggle-burger-menu span,
+  .toggle-burger-menu hr {
+    transition: all 0.5s cubic-bezier(0.64, 0.525, 0.2, 1.2);
+  }
+  .toggle-burger-menu hr {
+    border: none;
+    margin: 0;
+    background-color: black;
+    width: 40px;
+    height: 4px;
+    margin-bottom: 11px;
+  }
+</style>
